@@ -1,23 +1,25 @@
 <template>
   <div class="viewer">
+    <h3 class="title">阀门展观众登记</h3>
       <el-radio-group v-model="tabPosition" style="margin-bottom: 30px;">
+        
     <el-radio-button label="c">中文</el-radio-button>
     <el-radio-button label="e">English</el-radio-button>
   </el-radio-group>
     <el-form ref="formData" v-if="isFormShow" :rules="rulesUserInfo" :model="formData" label-width="100px">
-      <el-form-item :label="lang.name">
+      <el-form-item :label="lang.name" prop="Name">
         <el-input v-model="formData.name"></el-input>
       </el-form-item>
-      <el-form-item :label="lang.IDNO">
+      <el-form-item :label="lang.IDNO" >
         <el-input v-model="formData.IDNO"></el-input>
       </el-form-item>
       <el-form-item :label="lang.comName">
         <el-input v-model="formData.comName"></el-input>
       </el-form-item>
-      <el-form-item  :label="lang.mobile">
+      <el-form-item  :label="lang.mobile" prop="Mobile">
         <el-input v-model="formData.mobile"></el-input>
       </el-form-item>
-      <el-form-item  :label="lang.email">
+      <el-form-item  :label="lang.email" prop="Email">
         <el-input v-model="formData.email"></el-input>
       </el-form-item>
       <el-form-item label="" class="identify_code">
@@ -176,6 +178,11 @@ export default {
 .viewer {
   padding-top: 20px;
   width: 100%;
+  .title {
+    width: 100%;
+    font-size: 23px;
+    margin-bottom: 20px;
+  }
   /deep/ .el-form {
     width: 90%;
     margin-left: 5%;
