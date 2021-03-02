@@ -1,7 +1,13 @@
 <template>
   <div class="home">
     <div class="home_bg"></div>
-    <div></div>
+    <div class="content">
+      <h4>2019阀门世界亚洲博览会暨研讨会</h4>
+      <div>
+        时间：2019/08/28 09:00~2019/08/29 17:00<br />地址：上海世博展览馆，中国上海浦东新区国展路1099号<br />联系电话Tel:0086-21-63519609<br />联系邮箱Email:
+        vwasia.expo@kci-world.com
+      </div>
+    </div>
     <div class="menu">
       <div
         class="item"
@@ -118,6 +124,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+  max-width: 640px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -135,8 +142,24 @@ export default {
     background-size: 100% 100%;
     background-position: center top;
   }
+  .content {
+    position: relative;
+    top: 200px;
+    width: 100%;
+    color: #6e6e6e;
+    h4 {
+      font-size: 20px;
+      margin-bottom: 5px;
+      font-weight: bold;
+      overflow: hidden;
+    }
+    div {
+      width: 100%;
+      text-align: center;
+    }
+  }
   .menu {
-    margin-top: 410px;
+    margin-top: 250px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -148,6 +171,7 @@ export default {
       overflow: overlay;
       background-image: none;
       background-color: rgba(148, 148, 148, 0.7);
+      color: #fff;
       border-radius: 0px;
       transform: scale(1) rotateZ(0deg);
       display: flex;

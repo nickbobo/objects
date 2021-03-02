@@ -4,29 +4,29 @@
     <el-radio-button label="c">中文</el-radio-button>
     <el-radio-button label="e">English</el-radio-button>
   </el-radio-group>
-    <el-form ref="formData" :rules="rulesUserInfo" :model="formData" label-width="85px">
-      <el-form-item label="姓名">
+    <el-form ref="formData" v-if="isFormShow" :rules="rulesUserInfo" :model="formData" label-width="100px">
+      <el-form-item :label="lang.name">
         <el-input v-model="formData.name"></el-input>
       </el-form-item>
-      <el-form-item label="身份证号">
+      <el-form-item :label="lang.IDNO">
         <el-input v-model="formData.IDNO"></el-input>
       </el-form-item>
-      <el-form-item label="公司名">
+      <el-form-item :label="lang.comName">
         <el-input v-model="formData.comName"></el-input>
       </el-form-item>
-      <el-form-item label="手机号">
+      <el-form-item  :label="lang.mobile">
         <el-input v-model="formData.mobile"></el-input>
       </el-form-item>
-      <el-form-item label="邮箱">
+      <el-form-item  :label="lang.email">
         <el-input v-model="formData.email"></el-input>
       </el-form-item>
-      <el-form-item label="图形验证码" class="identify_code">
+      <el-form-item label="" class="identify_code">
         <el-input v-model="formData.verificationCode"></el-input>
         <div @click="updateCode"><s-identify @click="updateCode" v-if="isShowCode" :identifyCode="identifyCode"></s-identify></div>
       </el-form-item>
 
-    <el-button type="primary" @click="submitForm">提交</el-button>
-    <el-button type="primary" @click="onReturn">返回</el-button>
+    <el-button type="primary" @click="submitForm">{{lang.but1}}</el-button>
+    <el-button type="primary" @click="onReturn">{{lang.but2}}</el-button>
     </el-form>
   </div>
 </template>
@@ -44,6 +44,7 @@ export default {
     return {
       tabPosition: "c",
       isShowCode: true,
+      isFormShow: true,
       identifyCode: "1234",
       identifyCodes: "1234",
       sidentify: "",
@@ -56,10 +57,34 @@ export default {
 
         verificationCode: "",
       },
-
       lang: {
-        English: {},
-        Chinese: {},
+        name: "姓名",
+        comName: "公司名",
+        email: "邮箱",
+        mobile: "手机号",
+        IDNO: "身份证号",
+        but1: "提交",
+        but2: "返回",
+      },
+      langs: {
+        English: {
+          name: "Name",
+          comName: "CompanyName",
+          email: "Email",
+          mobile: "Mobile",
+          IDNO: "IDNumber",
+          but1: "Submit",
+          but2: "Return",
+        },
+        Chinese: {
+          name: "姓名",
+          comName: "公司名",
+          email: "邮箱",
+          mobile: "手机号",
+          IDNO: "身份证号",
+          but1: "提交",
+          but2: "返回",
+        },
       },
       rulesUserInfo: {
         Name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
@@ -77,10 +102,25 @@ export default {
       contractVisable: false,
     };
   },
+  watch: {
+    tabPosition: function(val) {
+      this.isFormShow = false;
+      console.info(val);
+      if (val == "c") {
+        this.lang = this.langs.Chinese;
+      }
+      if (val == "e") {
+        this.lang = this.langs.English;
+      }
+      this.isFormShow = true;
+    },
+  },
   mounted() {
     this.identifyCode = "";
     this.makeCode(this.identifyCodes, 1);
+    console.info(this.lang);
   },
+
   methods: {
     onReturn() {
       this.$router.go(-1);
