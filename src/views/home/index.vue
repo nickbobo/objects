@@ -3,7 +3,12 @@
     <div class="home_bg"></div>
     <div></div>
     <div class="menu">
-      <div class="item" v-for="(item, index) in menuList" :key="index" @click="goPage">
+      <div
+        class="item"
+        v-for="(item, index) in menuList"
+        :key="index"
+        @click="goPage(index)"
+      >
         <div class="item-con">
           <div class="icon"><img :src="item.icon" /></div>
           <div class="title">
@@ -80,8 +85,32 @@ export default {
   // 观众预登陆 展位平面图 研讨会报名 Conf 研讨会议程 conf Program 逸散泄露 培训课程
   // FE Course
   methods: {
-    goPage() {
-      this.$router.push({ path: "/viewer" });  //观众登记
+    goPage(status) {
+      switch (status) {
+        case 0:
+          this.$router.push({ path: "/viewer" }); //观众登记
+          // this.$router.push({ path: "/exhibitor" }); //观众登记
+          break;
+        case 1:
+          this.downloadFile(
+            "文件名.pdf",
+            "http://image.cache.timepack.cn/nodejs.pdf"
+          );
+          break;
+      }
+    },
+
+    downloadFile(fileName, url) {
+      if (!url) {
+        return;
+      }
+      // let url = window.URL.createObjectURL(new Blob([data]));
+      let link = document.createElement("a");
+      link.style.display = "none";
+      link.href = url;
+      link.setAttribute("download", fileName);
+      document.body.appendChild(link);
+      link.click();
     },
   },
 };
