@@ -5,8 +5,8 @@
       <div class="com">战宇科技</div>
       <div class="type">AirPods一二三代电池更换维修</div>
       <div class="issue">
-        <div class="issue-item">不开机 断链 不充电</div>
-        <div class="issue-item">声音小 进水</div>
+        <div class="issue-item">降噪杂音 断链 不充电</div>
+        <div class="issue-item">声音小 进水 破音</div>
         <div class="issue-item">电池无痕无损更换</div>
         <div class="issue-item">原装正品电池</div>
       </div>
@@ -48,6 +48,10 @@
       position: relative;
       display: body;
       font-weight:bold;
+      background:#fff;
+      border:5px solid #3b77fb;
+      border-radius:20px;
+
       .promise{
         background:#f98133;
         color:#fff;
@@ -81,7 +85,7 @@
         font-weight: bold;
         letter-spacing: 5px;
         background: #3b77fb;
-        border-bottom-right-radius: 40px;
+        border-bottom-right-radius: 20px;
       }
 
       .type {
@@ -89,7 +93,6 @@
         font-weight: bold;
         font-size: 30px;
         color: #b52838;
-        margin-left: 15px;
       }
     }
   }
