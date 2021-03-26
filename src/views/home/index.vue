@@ -3,7 +3,7 @@
   <div class="home">
     <el-button icon="el-icon-download" class="topbutton" circle type="mini" @click="saveImage('Top3Img', 'airpods维修主图')">生成图片并下载</el-button>
     <div class="product" id="Top3Img" ref="Top3Img" v-if="false">
-      <div class="com">战宇科技</div>
+      <div class="com">上海战宇科技实体店</div>
       <div class="type">AirPods一二三代电池更换维修</div>
       <div class="issue">
         <div class="issue-item">断链 续航短</div>
@@ -23,14 +23,15 @@
     </div>
 
 
-    <div class="product" id="Top3Img" ref="Top3Img">
-      <div class="com">战宇科技</div>
+    <div class="product" id="Top3Img" ref="Top3Img" v-if='false'>
+      <div class="com">波波修耳机</div>
       <div class="type">BeatsX耳机维修</div>
       <div class="issue">
         <div class="issue-item">单耳响 有杂音</div>
         <div class="issue-item">不开机 红白灯</div>
         <div class="issue-item">闪红灯 换头梁</div>
-        <div class="issue-item">头梁电池无损更换</div>
+        <div class="issue-item">续航短 换电池</div>
+        <div class="issue-item">头梁无损更换</div>
       </div>
       <div class="price">头梁+电池惊爆价<span>90</span></div>
       <div class="promise">
@@ -39,6 +40,29 @@
 
       <div class="img_bg beatsx">
         <img src="./../../../static/beatsx.jpg">
+      </div>
+    </div>
+
+
+    <div class="product" id="Top3Img" ref="Top3Img">
+      <div class="com">波波修耳机</div>
+      <div class="type">AirPods Pro耳机维修</div>
+      <div class="issue">
+        <div class="issue-item">降噪 异常</div>
+        <div class="issue-item">耳机 破音</div>
+        <div class="issue-item">进水 不开机</div>
+        <div class="issue-item">更换 电池</div>
+        <div class="issue-item">更换 外壳</div>
+      </div>
+      <!-- <div class="price">头梁+电池惊爆价<span>90</span></div> -->
+      <div class="promise">
+        更换都是原装配件，承诺质保<span>90</span>天
+      </div>
+
+      <div class="img_bg airpodspro">
+        <!-- <img src="./../../../static/airpodspro1.jpg"> -->
+        <img src="./../../../static/airpodspro.jpg">
+
       </div>
     </div>
 
@@ -84,6 +108,7 @@
       background: #fff;
       border: 15px solid #3b77fb;
       border-radius: 20px;
+      margin-bottom: 1000px;
 
       .img_bg {
         width: 240px;
@@ -91,18 +116,27 @@
         position: absolute;
         top: 100px;
         right: 10px;
-
         img {
           width: 100%;
-
-
         }
-
       }
 
       .beatsx {
+        top: 130px;
+        right: 0;
+
         img {
-          width: 80%;
+          width: 90%;
+        }
+      }
+
+      .airpodspro {
+        img {
+
+          position: absolute;
+          right: -10px;
+          top: 20px;
+          clip: rect(0px 243px 266px 0px);
         }
 
       }
@@ -132,8 +166,9 @@
           display: body;
           font-size: 40px;
           font-weight: bold;
+          margin: 0 8px;
           position: relative;
-          text-stroke:3px #ffc198;
+          text-stroke: 3px #ffc198;
           -webkit-text-stroke: 3px #ffc198;
         }
       }
@@ -158,7 +193,7 @@
           font-size: 50px;
           font-weight: bold;
           position: relative;
-          text-stroke:3px #276cff;
+          text-stroke: 3px #276cff;
           -webkit-text-stroke: 3px #276cff;
         }
       }
@@ -182,10 +217,7 @@
       }
 
       .com {
-        /* position:absolute; */
-        /* top: 0; */
-        /* let:0; */
-        width: 180px;
+        width: 200px;
         padding: 5px;
         color: #fff;
 
@@ -194,6 +226,11 @@
         letter-spacing: 5px;
         background: #3b77fb;
         border-bottom-right-radius: 20px;
+
+        span {
+          font-size: 18px;
+          letter-spacing: 0px;
+        }
       }
 
       .type {
