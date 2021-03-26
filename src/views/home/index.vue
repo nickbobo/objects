@@ -1,13 +1,15 @@
 <template>
 
   <div class="home">
-    <div class="product" id="Top3Img" ref="Top3Img">
+    <el-button icon="el-icon-download" class="topbutton" circle type="mini" @click="saveImage('Top3Img', 'airpods维修主图')">生成图片并下载</el-button>
+    <div class="product" id="Top3Img" ref="Top3Img" v-if="false">
       <div class="com">战宇科技</div>
       <div class="type">AirPods一二三代电池更换维修</div>
       <div class="issue">
-        <div class="issue-item">降噪杂音 断链 不充电</div>
-        <div class="issue-item">声音小 进水 破音</div>
-        <div class="issue-item">电池无痕无损更换</div>
+        <div class="issue-item">断链 续航短</div>
+        <div class="issue-item">进水 不充电</div>
+        <div class="issue-item">声音小 破音</div>
+        <div class="issue-item">电池无损更换</div>
         <div class="issue-item">原装正品电池</div>
       </div>
       <div class="price">充电仓+双耳惊爆价<span>130</span></div>
@@ -19,7 +21,29 @@
         <img src="./../../../static/airpods.jpg">
       </div>
     </div>
-    <el-button icon="el-icon-download" circle type="mini" @click="saveImage('Top3Img', 'airpods维修主图')">生成图片并下载</el-button>
+
+
+    <div class="product" id="Top3Img" ref="Top3Img">
+      <div class="com">战宇科技</div>
+      <div class="type">BeatsX耳机维修</div>
+      <div class="issue">
+        <div class="issue-item">单耳响 有杂音</div>
+        <div class="issue-item">不开机 红白灯</div>
+        <div class="issue-item">闪红灯 换头梁</div>
+        <div class="issue-item">头梁电池无损更换</div>
+      </div>
+      <div class="price">头梁+电池惊爆价<span>90</span></div>
+      <div class="promise">
+        更换都是原装配件，承诺质保<span>90</span>天
+      </div>
+
+      <div class="img_bg beatsx">
+        <img src="./../../../static/beatsx.jpg">
+      </div>
+    </div>
+
+
+
     <div v-if="false">
       <div class="home_bg"></div>
       <div class="content">
@@ -46,6 +70,10 @@
 </template>
 <style lang="scss" scoped>
   .home {
+    .topbutton {
+      margin-bottom: 600px;
+    }
+
     .product {
       width: 500px;
       height: 500px;
@@ -54,7 +82,7 @@
       display: body;
       font-weight: bold;
       background: #fff;
-      border: 5px solid #3b77fb;
+      border: 15px solid #3b77fb;
       border-radius: 20px;
 
       .img_bg {
@@ -66,7 +94,17 @@
 
         img {
           width: 100%;
+
+
         }
+
+      }
+
+      .beatsx {
+        img {
+          width: 80%;
+        }
+
       }
 
       html {
@@ -95,7 +133,7 @@
           font-size: 40px;
           font-weight: bold;
           position: relative;
-          /* text-stroke:4px #103c9b; */
+          text-stroke:3px #ffc198;
           -webkit-text-stroke: 3px #ffc198;
         }
       }
@@ -111,8 +149,8 @@
         height: 60px;
         line-height: 60px;
         padding: 0;
-        border-bottom-right-radius: 15px;
-        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
 
         span {
           display: body;
@@ -120,21 +158,24 @@
           font-size: 50px;
           font-weight: bold;
           position: relative;
-          /* text-stroke:4px #103c9b; */
+          text-stroke:3px #276cff;
           -webkit-text-stroke: 3px #276cff;
         }
       }
 
       .issue {
-        margin-left: 30px;
+        margin-left: 10px;
+        position: relative;
+        z-index: 999;
 
         div {
-          padding: 5px 10px;
+          padding: 2px 5px;
           background: #e62837;
           color: #fff;
-          width: 200px;
-          font-size: 20px;
+          width: 240px;
+          font-size: 25px;
           font-weight: bold;
+          letter-spacing: 5px;
           margin-top: 15px;
           border-radius: 30px;
         }
@@ -147,6 +188,7 @@
         width: 180px;
         padding: 5px;
         color: #fff;
+
         font-size: 28px;
         font-weight: bold;
         letter-spacing: 5px;
@@ -157,7 +199,10 @@
       .type {
         width: 100%;
         font-weight: bold;
-        font-size: 30px;
+        font-size: 32px;
+        margin-top: 5px;
+        text-stroke: 1px #c47171;
+        -webkit-text-stroke: 1px #c47171;
         color: #b52838;
       }
     }
