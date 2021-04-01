@@ -23,7 +23,7 @@
     </div>
 
 
-    <div class="product" id="Top3Img" ref="Top3Img" v-if='false'>
+    <div class="product" id="Top3Img" ref="Top3Img">
       <div class="com">波波修耳机</div>
       <div class="type">BeatsX耳机维修</div>
       <div class="issue">
@@ -39,12 +39,12 @@
       </div>
 
       <div class="img_bg beatsx">
-        <img src="./../../../static/beatsx.jpg">
+        <img src="./../../../static/beatsx1.jpg">
       </div>
     </div>
 
 
-    <div class="product" id="Top3Img" ref="Top3Img">
+    <div class="product" id="Top3Img" ref="Top3Img" v-if='false'>
       <div class="com">波波修耳机</div>
       <div class="type">AirPods Pro耳机维修</div>
       <div class="issue">
@@ -62,6 +62,28 @@
       <div class="img_bg airpodspro">
         <!-- <img src="./../../../static/airpodspro1.jpg"> -->
         <img src="./../../../static/airpodspro.jpg">
+
+      </div>
+    </div>
+
+    <div class="product" id="Top3Img" ref="Top3Img" v-if="false">
+      <div class="com">波波修耳机</div>
+      <div class="type">BOSE QC30耳机维修</div>
+      <div class="issue">
+        <div class="issue-item">杂音 充电红灯</div>
+        <div class="issue-item">不开机 不充电</div>
+        <div class="issue-item">开机常亮绿灯</div>
+        <div class="issue-item">脱皮 换盖板</div>
+        <div class="issue-item">换电池 换头梁</div>
+      </div>
+      <!-- <div class="price">头梁+电池惊爆价<span>90</span></div> -->
+      <div class="promise">
+        更换都是原装配件，承诺质保<span>90</span>天
+      </div>
+
+      <div class="img_bg qc30">
+        <!-- <img src="./../../../static/airpodspro1.jpg"> -->
+        <img src="./../../../static/qc30.jpg">
 
       </div>
     </div>
