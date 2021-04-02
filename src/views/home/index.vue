@@ -92,7 +92,7 @@
 
     <div class="product" id="Top3Img" ref="Top3Img">
       <div class="com">波波修耳机</div>
-      <div class="type">Beats Sutdio23录音师耳机维修</div>
+      <div class="type">Beats Sutdio2 3录音师耳机维修</div>
       <div class="issue">
         <div class="issue-item">单响 不开机</div>
         <div class="issue-item">换头梁 换耳罩</div>
@@ -107,7 +107,7 @@
 
       <div class="img_bg lys">
         <!-- <img src="./../../../static/airpodspro1.jpg"> -->
-        <img src="./../../../static/lys.jpg">
+        <img src="./../../../static/lys31.jpg">
 
       </div>
     </div>
@@ -184,6 +184,14 @@
           clip: rect(0px 243px 266px 0px);
         }
 
+      }
+      .lys{
+        img{
+          top: 30px;
+          position: absolute;
+          right: -10px;
+          width: 120%;
+        }
       }
 
       html {
