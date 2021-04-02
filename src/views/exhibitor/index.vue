@@ -16,6 +16,9 @@ export default {
     };
   },
   methods: {},
+  mounted(){
+    console.info(1111)
+  }
 };
 </script>
 

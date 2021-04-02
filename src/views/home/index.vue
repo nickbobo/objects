@@ -2,6 +2,7 @@
 
   <div class="home">
     <el-button icon="el-icon-download" class="topbutton" circle type="mini" @click="saveImage('Top3Img', 'airpods维修主图')">生成图片并下载</el-button>
+    <label>121212</label>
     <div class="product" id="Top3Img" ref="Top3Img" v-if="false">
       <div class="com">上海战宇科技实体店</div>
       <div class="type">AirPods一二三代电池更换维修</div>
@@ -23,7 +24,7 @@
     </div>
 
 
-    <div class="product" id="Top3Img" ref="Top3Img">
+    <div class="product" id="Top3Img" ref="Top3Img" v-if='false'>
       <div class="com">波波修耳机</div>
       <div class="type">BeatsX耳机维修</div>
       <div class="issue">
@@ -89,6 +90,28 @@
     </div>
 
 
+    <div class="product" id="Top3Img" ref="Top3Img">
+      <div class="com">波波修耳机</div>
+      <div class="type">Beats Sutdio23录音师耳机维修</div>
+      <div class="issue">
+        <div class="issue-item">单响 不开机</div>
+        <div class="issue-item">换头梁 换耳罩</div>
+        <div class="issue-item">不充电 换电池</div>
+        <div class="issue-item">换外壳 连不上</div>
+        <div class="issue-item">换钢标 换线</div>
+      </div>
+      <!-- <div class="price">头梁+电池惊爆价<span>90</span></div> -->
+      <div class="promise">
+        更换都是原装配件，承诺质保<span>90</span>天
+      </div>
+
+      <div class="img_bg lys">
+        <!-- <img src="./../../../static/airpodspro1.jpg"> -->
+        <img src="./../../../static/lys.jpg">
+
+      </div>
+    </div>
+
 
     <div v-if="false">
       <div class="home_bg"></div>
@@ -120,7 +143,7 @@
       margin-bottom: 600px;
     }
 
-    .product {
+    .product { 
       width: 500px;
       height: 500px;
       border: 1px solid #000;
@@ -330,12 +353,46 @@
         ]
       }
     },
+    
+
+    mounted(){
+      // function People(name,age){
+      //   this.name = name;
+      //   this.age = age
+      // }
+      // People.prototype.info = (()=>{
+      //   console.info(`name:${this.name},age:${this.age}`)
+      // })
+      // function Student(name,age,school){
+      //   People.call(this,...arguments);
+      //   this.school = school;
+      // }
+      // Student.prototype = People.prototype;
+
+      // console.info(1111)
+
+      function SuperType(){
+        this.property = true;
+      }
+      SuperType.property.getSuperValue = function(){
+        return this.property;
+      }
+      function subType(){
+        this.property = false;
+      }
+      SuperType.property = new Su
+
+    },
+
+
     // 观众预登陆 展位平面图 研讨会报名 Conf 研讨会议程 conf Program 逸散泄露 培训课程
     // FE Course
     methods: {
       //下面是methods中的内容
       //图片转换格式的方法 直接使用就好  不需要知道为什么
       dataURLToBlob(dataurl) {
+
+
         let arr = dataurl.split(',');
         let mime = arr[0].match(/:(.*?);/)[1];
         let bstr = atob(arr[1]);
