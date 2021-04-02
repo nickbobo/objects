@@ -90,7 +90,7 @@
     </div>
 
 
-    <div class="product" id="Top3Img" ref="Top3Img">
+    <div class="product" id="Top3Img" ref="Top3Img" v-if="false">
       <div class="com">波波修耳机</div>
       <div class="type">Beats Sutdio2 3录音师耳机维修</div>
       <div class="issue">
@@ -108,6 +108,28 @@
       <div class="img_bg lys">
         <!-- <img src="./../../../static/airpodspro1.jpg"> -->
         <img src="./../../../static/lys31.jpg">
+
+      </div>
+    </div>
+
+    <div class="product" id="Top3Img" ref="Top3Img">
+      <div class="com">波波修耳机</div>
+      <div class="type">B&O A1,A2,P2音响维修</div>
+      <div class="issue">
+        <div class="issue-item">不开机 死机</div>
+        <div class="issue-item">无限重启 破音</div>
+        <div class="issue-item">蓝牙连不上</div>
+        <div class="issue-item">按键无反应</div>
+        <div class="issue-item">换电池 换外壳</div>
+      </div>
+      <!-- <div class="price">头梁+电池惊爆价<span>90</span></div> -->
+      <div class="promise">
+        更换都是原装配件，承诺质保<span>90</span>天
+      </div>
+
+      <div class="img_bg lys">
+        <!-- <img src="./../../../static/airpodspro1.jpg"> -->
+        <img src="./../../../static/boA1.jpg">
 
       </div>
     </div>
