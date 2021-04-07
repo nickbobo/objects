@@ -205,7 +205,6 @@
           top: 20px;
           clip: rect(0px 243px 266px 0px);
         }
-
       }
       .lys{
         img{
