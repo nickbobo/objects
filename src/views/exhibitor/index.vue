@@ -19,6 +19,8 @@ export default {
   mounted(){
     console.info(1111)
   }
+
+  
 };
 </script>
 
