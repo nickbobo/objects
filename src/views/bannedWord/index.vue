@@ -3,10 +3,8 @@
     <div>闲鱼违禁词将用<span class="checked">红色</span>标注出来</div>
     <div class="word">
       <el-input type="textarea" v-model="word"></el-input>
-
     </div>
     <div class="query_result" v-html="encodeTextAreaString(brightenKeyword(word,keyword))">
-
     </div>
   </div>
 </template>

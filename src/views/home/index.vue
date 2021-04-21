@@ -112,7 +112,7 @@
       </div>
     </div>
 
-    <div class="product" id="Top3Img" ref="Top3Img">
+    <div class="product" id="Top3Img" ref="Top3Img" v-if="false">
       <div class="com">波波修耳机</div>
       <div class="type">B&O A1,A2,P2音响维修</div>
       <div class="issue">
@@ -133,6 +133,68 @@
 
       </div>
     </div>
+
+
+
+    <div class="product" id="Top3Img" ref="Top3Img" v-if="false">
+      <div class="com">波波修耳机</div>
+      <div class="type">Bose mini1 2音响维修</div>
+      <div class="issue">
+        <div class="issue-item">不开机 进水</div>
+        <div class="issue-item">不充电 </div>
+        <div class="issue-item">充电闪红灯</div>
+        <div class="issue-item">无声音 不连接</div>
+        <div class="issue-item">换电池 换外壳</div>
+      </div>
+      <!-- <div class="price">头梁+电池惊爆价<span>90</span></div> -->
+      <div class="promise">
+        更换都是原装配件，承诺质保<span>90</span>天
+      </div>
+
+      <div class="img_bg bosemini">
+        <!-- <img src="./../../../static/airpodspro1.jpg"> -->
+        <img src="./../../../static/bosemini2.jpg">
+
+      </div>
+    </div>
+
+
+
+    <div class="product" id="Top3Img" ref="Top3Img" v-if="false">
+      <div class="com">波波修耳机</div>
+      <div class="type">Bose 大水壶小水壶音响维修</div>
+      <div class="issue">
+        <div class="issue-item">不开机 进水</div>
+        <div class="issue-item">不充电 </div>
+        <div class="issue-item">充电闪红灯</div>
+        <div class="issue-item">无声音 不连接</div>
+        <div class="issue-item">换电池 换外壳</div>
+      </div>
+      <!-- <div class="price">头梁+电池惊爆价<span>90</span></div> -->
+      <div class="promise">
+        更换都是原装配件，承诺质保<span>90</span>天
+      </div>
+
+      <div class="img_bg bosemini">
+        <!-- <img src="./../../../static/airpodspro1.jpg"> -->
+        <img src="./../../../static/bosemini2.jpg">
+
+      </div>
+    </div>
+
+
+    
+
+
+    <div class="product img_history" id="Top3Img" ref="Top3Img">
+      <img src="./../../../static/bose01.jpg">
+      <img src="./../../../static/bose01.jpg">
+      <img src="./../../../static/bose01.jpg">
+      <img src="./../../../static/bose01.jpg">
+      <img src="./../../../static/bose01.jpg">
+      <img src="./../../../static/bose01.jpg">
+    </div>
+
 
 
     <div v-if="false">
@@ -165,7 +227,7 @@
       margin-bottom: 600px;
     }
 
-    .product { 
+    .product {
       width: 500px;
       height: 500px;
       border: 1px solid #000;
@@ -177,12 +239,23 @@
       border-radius: 20px;
       margin-bottom: 1000px;
 
+      &.img_history {
+        display: flex;
+        width: 400px;
+        flex-wrap: wrap;
+        img {
+          width: 200px;
+          height: 200px;
+        }
+      }
+
       .img_bg {
         width: 240px;
         height: 240px;
         position: absolute;
         top: 100px;
         right: 10px;
+
         img {
           width: 100%;
         }
@@ -206,12 +279,22 @@
           clip: rect(0px 243px 266px 0px);
         }
       }
-      .lys{
-        img{
+
+      .lys {
+        img {
           top: 30px;
           position: absolute;
           right: -10px;
           width: 120%;
+        }
+      }
+
+      .bosemini {
+        img {
+          width: 100%;
+          right: -10px;
+          position: absolute;
+          top: 50px;
         }
       }
 
@@ -333,58 +416,58 @@
         menuList: [
           {
             icon:
-              'https://static.31meijia.com/img/mobisite/templateIcons/column/persons.png',
+              'https://static.31meijia.com/img/mobisite/templateIcons/column/persons.jpg',
             title1: '观众预登陆',
             title2: 'Visitor'
           },
           {
             icon:
-              'https://static.31meijia.com/img/mobisite/templateIcons/column/地图导航.png',
+              'https://static.31meijia.com/img/mobisite/templateIcons/column/地图导航.jpg',
             title1: '展位平面图',
             title2: 'Floorplan'
           },
           {
             icon:
-              'https://static.31meijia.com/img/mobisite/templateIcons/column/抽奖_1.png',
+              'https://static.31meijia.com/img/mobisite/templateIcons/column/抽奖_1.jpg',
             title1: '研讨会报名',
             title2: ''
           },
           {
             icon:
-              'https://static.31meijia.com/img/mobisite/templateIcons/column/抽奖_1.png',
+              'https://static.31meijia.com/img/mobisite/templateIcons/column/抽奖_1.jpg',
             title1: 'Conf',
             title2: 'Registration'
           },
           {
             icon:
-              'https://static.31meijia.com/img/mobisite/templateIcons/column/clipboard.png',
+              'https://static.31meijia.com/img/mobisite/templateIcons/column/clipboard.jpg',
             title1: '研讨会议程',
             title2: '培训课程'
           },
           {
             icon:
-              'https://static.31meijia.com/img/mobisite/templateIcons/column/clipboard.png',
+              'https://static.31meijia.com/img/mobisite/templateIcons/column/clipboard.jpg',
             title1: 'Conf Program',
             title2: ''
           },
           {
             icon:
-              'https://static.31meijia.com/img/mobisite/templateIcons/column/指南.png',
+              'https://static.31meijia.com/img/mobisite/templateIcons/column/指南.jpg',
             title1: '逸散泄露',
             title2: ''
           },
           {
             icon:
-              'https://static.31meijia.com/img/mobisite/templateIcons/column/指南.png',
+              'https://static.31meijia.com/img/mobisite/templateIcons/column/指南.jpg',
             title1: 'FE Course',
             title2: ''
           }
         ]
       }
     },
-    
 
-    mounted(){
+
+    mounted() {
       // function People(name,age){
       //   this.name = name;
       //   this.age = age
@@ -400,13 +483,13 @@
 
       // console.info(1111)
 
-      function SuperType(){
+      function SuperType() {
         this.property = true;
       }
-      SuperType.property.getSuperValue = function(){
+      SuperType.property.getSuperValue = function () {
         return this.property;
       }
-      function subType(){
+      function subType() {
         this.property = false;
       }
       SuperType.property = new Su
@@ -444,10 +527,10 @@
           dom.style.display = 'none';
           a.style.display = 'none';
           document.body.removeChild(dom);
-          let blob = that.dataURLToBlob(dom.toDataURL('image/png'));
+          let blob = that.dataURLToBlob(dom.toDataURL('image/jpg'));
           a.setAttribute('href', URL.createObjectURL(blob));
           //这块是保存图片操作  可以设置保存的图片的信息
-          a.setAttribute('download', imgText + '.png');
+          a.setAttribute('download', imgText + '.jpg');
           document.body.appendChild(a);
           a.click();
           URL.revokeObjectURL(blob);
