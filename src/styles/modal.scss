@@ -1,0 +1,118 @@
+$gray: #f6f6f6;
+$blue: #428dde;
+$blue-hover: #5598e1;
+$red: #e8006d;
+$drakBlue: #428dde;
+$mh-joblist: 700px;
+.modal-overlay {
+  position: fixed;
+  box-sizing: border-box;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  // background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  opacity: 1;
+}
+.modal-box {
+  background-color: white;
+  padding: 0;
+  width: 500px;
+  position: relative;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // box-shadow: 0 20px 60px -2px rgba(27, 33, 58, 0.4);
+  box-sizing: border-box;
+  &.modal-lg {
+    width: 900px;
+    padding: 30px 40px 60px 40px;
+  }
+  &.modal-sm {
+    width: 360px;
+    padding: 25px 35px 35px;
+  }
+  &.modal-md {
+    width: 800px;
+    padding: 25px 35px 35px;
+  }
+  &.modal-smd {
+    width: 600px;
+    padding: 25px 35px 35px;
+  }
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: transparent;
+    cursor: pointer;
+    .iconfont {
+      font-size: 22px;
+      line-height: 1;
+      font-weight: bold;
+      color: #ccc;
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+}
+
+.modal-header {
+  position: relative;
+  .modal-title {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  .close {
+    top: -10px;
+    right: -20px;
+  }
+}
+.modal-body {
+  line-height: 20px;
+}
+.modal-footer {
+  text-align: center;
+  margin-top: 20px;
+  .w-btn {
+    height: 30px;
+    line-height: 30px;
+    min-width: 95px;
+    & + .w-btn {
+      margin-left: 8px;
+    }
+  }
+  .w-bt-xl {
+    line-height: 42px;
+    height: 42px;
+    min-width: 150px;
+    font-size: 15px;
+  }
+  .w-btn {
+    &.btn-primary {
+      background-color: $bgray;
+      border-color: $bgray;
+      color: #fff;
+      &:hover {
+        background-color: $bgray-hover;
+        border-color: $bgray-hover;
+      }
+    }
+  }
+}
+
+.el-dialog.modal-overlay {
+  width: 0;
+}
+
+.del-tip {
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  font-size: 16px;
+  margin-top: 30px;
+}

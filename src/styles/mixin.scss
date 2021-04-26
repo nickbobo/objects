@@ -1,0 +1,231 @@
+@import "./variables.scss";
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+// 设置宽高
+@mixin wh($wid, $hei) {
+  @if $wid {
+    width: $wid;
+  }
+  @if $hei {
+    height: $hei;
+  }
+  // overflow: hidden;
+}
+@mixin whf($val) {
+  width: $val;
+  height: $val;
+}
+// 设置高度与行高一致
+@mixin lineH($index) {
+  height: $index;
+  line-height: $index;
+}
+// 父元素相对，子元素绝对
+@mixin absolut($index) {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: $index;
+  }
+}
+// 文本样式
+@mixin txts($fs, $cl) {
+  @if $fs {
+    font-size: $fs;
+  }
+  @if $cl {
+    color: $cl;
+  }
+}
+// 透明度设置
+@mixin op($index) {
+  opacity: $index;
+  filter: alpha(opacity = ($index * 100));
+}
+// 背景图
+@mixin bgImg($link) {
+  background: url("~static/img/"+$link) no-repeat;
+}
+
+@mixin bgImg1($link) {
+  background: url("~static/img/"+$link) no-repeat;
+}
+@mixin logBgImg() {
+  background: #f6f6f6 url(~static/img/reg-bg.jpg) no-repeat top center;
+}
+// icon图标
+@mixin iCon($w, $h, $bg, $index) {
+  @include wh($w, $h);
+  @include bgImg($bg);
+  margin-right: $index;
+}
+// 变形
+@mixin transForm($index) {
+  -webkit-transform: $index;
+  -moz-transform: $index;
+  -ms-transform: $index;
+  transform: $index;
+}
+
+// 制作小箭头
+@mixin arrow($clr, $index) {
+  border-right: 1px solid $clr;
+  border-bottom: 1px solid $clr;
+  @include transForm(rotate($index));
+}
+// 圆角度
+@mixin radiu($index) {
+  -webkit-border-radius: $index;
+  -moz-border-radius: $index;
+  border-radius: $index;
+}
+// 盒阴影
+@mixin boxSd($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  -ms-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+// 常用内联块元素设置
+%inlineB {
+  display: inline-block;
+  _display: inline;
+}
+
+/* 图标默认样式 */
+@mixin icon-def-style($index) {
+  color: #bbb;
+  font-size: 18px;
+  @if $index {
+    cursor: pointer;
+  }
+}
+
+/* 按键样式*/
+@mixin buttonStyle {
+  width: 80px;
+  padding: 6px 0px;
+}
+
+/*文本格式化，超出范围，显示省略号*/
+@mixin text-overflow($width: 100%, $display: block) {
+  width: $width;
+  display: $display;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+//display flex  flex布局
+@mixin df {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+}
+
+//align-items:center  垂直居中
+@mixin df-ai {
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+}
+
+//justify-content: center;  水平居中
+@mixin df-jc {
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+}
+
+@mixin df-jcs($val) {
+  -webkit-justify-content: $val;
+  -moz-justify-content: $val;
+  justify-content: $val;
+}
+
+@mixin unselect {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+@mixin container {
+  width: $layout-w;
+  position: relative;
+  margin: 0 auto;
+  // padding: 0 10px;
+  box-sizing: border-box;
+  @include clearfix();
+}
+
+@mixin shadow {
+  @include boxSd(
+    0 10px 16px rgba(6, 6, 6, 0.1)
+  ); //box-shadow: 0 10px 16px rgba(6,6,6,.1)
+}
+
+@mixin btn-shadow {
+  @include boxSd(
+    0 4px 10px rgba(6, 6, 6, 0.23)
+  ); //box-shadow:0 4px 10px rgba(6,6,6,.23)
+}
+
+@mixin iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin white-bg {
+  background-color: #fff;
+  @include shadow();
+}
+
+@mixin list-line {
+  position: relative;
+  padding-left: 80px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  margin: 5px 0;
+  line-height: 20px;
+  .name {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #999;
+  }
+  .val {
+    color: #000;
+    word-wrap: break-word;
+  }
+}

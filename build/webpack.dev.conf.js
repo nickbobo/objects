@@ -9,13 +9,49 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-
+var express = require('express');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+// const { proxy } = require('http-proxy-middleware');
+ var app = express();
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
-
+let proxyTable = config.dev.proxyTable;
+// Object.keys(proxyTable).forEach(function (context) {
+//   var options = proxyTable[context]
+//   if (typeof options === 'string') {
+//     options = { 
+//       target: options,
+//       onProxyRes(proxyRes, req, res) {
+//         //set-cookie:JSESSIONID=6F766ED2EEEBEAA9245F7F908A848857; Path=/webserver/; HttpOnly
+        
+//         var oldCookie = proxyRes.headers['set-cookie']
+//         console.log(oldCookie)
+//         if(oldCookie== null || oldCookie.length==0){
+//           delete proxyRes.headers['set-cookie']
+//           return
+//         }
+//         console.log(oldCookie)
+//         var oldCookieItems = oldCookie[0].split(';')
+//         var newCookie = ''
+//         for(var i=0; i < oldCookieItems.length; ++i){
+//           if(newCookie.length >0)
+//             newCookie += ';'
+//           if(oldCookieItems[i].indexOf('Path=') >= 0)
+//             newCookie += 'Path=/'
+//           else
+//             newCookie += oldCookieItems[i]
+//         }
+//         proxyRes.headers['set-cookie'] = [newCookie]
+//         //proxyRes.headers['x-addedygc'] = 'foobar';     // add new header to response 
+//         //delete proxyRes.headers['connection'];       // remove header from response 
+//       }
+//     }
+//   }
+//   app.use(createProxyMiddleware(context, options))
+// })
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: false })
+    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
@@ -38,7 +74,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       ? { warnings: false, errors: true }
       : false,
     publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
+    proxy: proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,

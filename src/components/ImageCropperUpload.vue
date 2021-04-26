@@ -1,0 +1,527 @@
+<template>
+  <div class="image_cropper_uploads">
+    <el-dialog
+      :visible.sync="isShowDialog"
+      :modal-append-to-body="false"
+      :close-on-click-modal="false"
+      :show-close="false"
+      custom-class="icu_dialog"
+      center
+    >
+      <el-row class="cropper_content">
+        <div class="show_redact">
+          <el-row v-show="!isRedactShow" class="uploads_before">
+            <el-col :span="24"><img src="~static/img/img_null.png"/></el-col>
+            <el-col :span="24" class="uploads_astrict_title"
+              >支持jpg、png，大小不超过6M</el-col
+            >
+            <el-col :span="24" class="uploads_but">
+              <input
+                type="file"
+                id="uploads"
+                :value="imgFile"
+                accept="image/png, image/jpeg, image/gif, image/jpg"
+                title=""
+                @change="uploadImg($event, 1)"
+              />
+              <el-button for="uploads" type="">选择图片</el-button>
+            </el-col>
+          </el-row>
+          <el-row class="cropper_cont" v-show="isRedactShow">
+            <vueCropper
+              ref="cropper"
+              :img="option.img"
+              :outputSize="option.size"
+              :outputType="option.outputType"
+              :info="true"
+              :full="option.full"
+              :canMove="option.canMove"
+              :canMoveBox="option.canMoveBox"
+              :original="option.original"
+              :autoCrop="option.autoCrop"
+              :autoCropWidth="option.autoCropWidth"
+              :autoCropHeight="option.autoCropHeight"
+              :fixedBox="option.fixedBox"
+              @realTime="realTime"
+              @imgLoad="imgLoad"
+            ></vueCropper>
+            <span class="operation_title"
+              >鼠标滚轮控制图片显示大小，鼠标拖拽调整显示位置</span
+            >
+          </el-row>
+        </div>
+        <div class="show_preview">
+          <div class="same square">
+            <div class="same_content" :style="previews.div">
+              <img :src="previews.url" :style="previews.img" />
+            </div>
+          </div>
+          <div class="same roundness">
+            <div class="same_content" :style="previews.div">
+              <img :src="previews.url" :style="previews.img" />
+            </div>
+          </div>
+          <div class="same roundness_mini">
+            <div class="same_content" :style="previews.div">
+              <img :src="previews.url" :style="previews.img" />
+            </div>
+          </div>
+          <div class="img_preview_edit">
+            <span v-if="!isRedactShow">预览</span>
+
+            <div v-if="isRedactShow" class="uploads_but">
+              <input
+                type="file"
+                id="uploads"
+                :value="imgFile"
+                accept="image/png, image/jpeg, image/gif, image/jpg"
+                title=""
+                @change="uploadImg($event, 1)"
+              /><el-button for="uploads" type="">重新选择图片</el-button>
+            </div>
+          </div>
+        </div>
+      </el-row>
+      <el-row class="button_content">
+        <el-button size="small" class="but_cancel" @click="isShowDialog = false"
+          >取消</el-button
+        >
+        <el-button type="primary" size="small" class="but_save" @click="finish"
+          >确定</el-button
+        >
+      </el-row>
+    </el-dialog>
+  </div>
+</template>
+
+<script>
+import { VueCropper } from "vue-cropper";
+// import Api from "@/js/api.js"; //接口url配置文件
+import { UpdateMyPortrait } from "api/candidate";
+export default {
+  name: "ImageCropperUpload",
+  data() {
+    return {
+      headImg: "",
+      //剪切图片上传
+      crap: false,
+      previews: {
+        img: {
+          transform: ""
+        }
+      },
+      option: {
+        img: "",
+        outputSize: 1, //剪切后的图片质量（0.1-1）
+        full: true, //输出原图比例截图 props名full
+        outputType: "png",
+        canMove: true,
+        original: false,
+        canMoveBox: true,
+        autoCrop: true,
+        autoCropWidth: 180,
+        autoCropHeight: 180,
+        fixedBox: true
+      },
+      fileName: "", //本机文件地址
+      downImg: "#",
+      imgFile: "",
+      isShowDialog: false,
+      isRedactShow: false,
+      uploadImgRelaPath: "" //上传后的图片的地址（不带服务器域名）
+    };
+  },
+  components: {
+    VueCropper
+  },
+  methods: {
+    //放大/缩小
+    changeScale(num) {
+      console.log("changeScale");
+      num = num || 1;
+      this.$refs.cropper.changeScale(num);
+    },
+    //坐旋转
+    rotateLeft() {
+      console.log("rotateLeft");
+      this.$refs.cropper.rotateLeft();
+    },
+    //右旋转
+    rotateRight() {
+      console.log("rotateRight");
+      this.$refs.cropper.rotateRight();
+    },
+    //上传图片（点击上传按钮）
+    finish() {
+      let _this = this;
+      let formData = new FormData();
+      // 输出
+      this.$refs.cropper.getCropBlob(data => {
+        let img = window.URL.createObjectURL(data);
+        this.model = true;
+        this.modelSrc = img;
+        formData.append("file", data, this.fileName);
+
+        UpdateMyPortrait(formData).then(res => {
+          if (res.data.Success) {
+            this.$message({
+              showClose: true,
+              message: "上传成功。",
+              type: "success"
+            });
+            this.isShowDialog = false;
+            this.$store.dispatch("SetMyPortraitUrl", true);
+          } else {
+            this.$message.error(res.data.Message);
+          }
+        });
+        // this.$http
+        //   .post(Api.uploadSysHeadImg.url, formData, {
+        //     contentType: false,
+        //     processData: false,
+        //     headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        //   })
+        //   .then(response => {
+        //     var res = response.data;
+        //     if (res.success == 1) {
+        //       $("#btn1").val("");
+        //       _this.imgFile = "";
+        //       _this.headImg = res.realPathList[0]; //完整路径
+        //       _this.uploadImgRelaPath = res.relaPathList[0]; //非完整路径
+        //       _this.$message({
+        //         //element-ui的消息Message消息提示组件
+        //         type: "success",
+        //         message: "上传成功"
+        //       });
+        //     }
+        //   });
+      });
+    },
+    // 实时预览函数
+    realTime(data) {
+      // console.log("realTime");
+      this.previews = data;
+    },
+    //下载图片
+    down(type) {
+      // console.log("down");
+      var aLink = document.createElement("a");
+      aLink.download = "author-img";
+      if (type === "blob") {
+        this.$refs.cropper.getCropBlob(data => {
+          this.downImg = window.URL.createObjectURL(data);
+          aLink.href = window.URL.createObjectURL(data);
+          aLink.click();
+        });
+      } else {
+        this.$refs.cropper.getCropData(data => {
+          this.downImg = data;
+          aLink.href = data;
+          aLink.click();
+        });
+      }
+    },
+    //选择本地图片
+    uploadImg(e, num) {
+      this.isRedactShow = true;
+      var _this = this;
+      //上传图片
+      var file = e.target.files[0];
+      _this.fileName = file.name;
+      if (!/\.(gif|jpg|jpeg|png|bmp|GIF|JPG|PNG)$/.test(e.target.value)) {
+        alert("图片类型必须是.gif,jpeg,jpg,png,bmp中的一种");
+        return false;
+      }
+      var reader = new FileReader();
+      reader.onload = e => {
+        let data;
+        if (typeof e.target.result === "object") {
+          // 把Array Buffer转化为blob 如果是base64不需要
+          data = window.URL.createObjectURL(new Blob([e.target.result]));
+        } else {
+          data = e.target.result;
+        }
+        if (num === 1) {
+          _this.option.img = data;
+        } else if (num === 2) {
+          _this.example2.img = data;
+        }
+      };
+      // 转化为base64
+      // reader.readAsDataURL(file)
+      // 转化为blob
+      reader.readAsArrayBuffer(file);
+    },
+    imgLoad(msg) {
+      console.log("imgLoad");
+      console.log(msg);
+    }
+  },
+  watch: {
+    isShowDialog: function(newVal) {
+      if (newVal) {
+        this.previews = {
+          img: {
+            transform: ""
+          }
+        };
+        this.isRedactShow = false;
+      }
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.el-dialog {
+  &.icu_dialog {
+    height: 470px;
+    width: 528px;
+    overflow: hidden;
+    padding: 30px 36px;
+    .uploads_but {
+      position: relative;
+      width: 80px;
+      height: 30px;
+      input {
+        position: absolute;
+        width: 80px;
+        height: 30px;
+        opacity: 0;
+        cursor: pointer;
+        font-size: 0;
+        padding: 0;
+        cursor: pointer;
+        &:hover {
+          background: #dddddd;
+        }
+      }
+      .el-button {
+        width: 80px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+      }
+    }
+    .el-dialog__body {
+      padding: 0;
+    }
+    .cropper_content {
+      display: flex;
+      .show_redact {
+        width: 300px;
+        height: 300px;
+        background: #f2f2f2;
+        .cropper_cont {
+          width: 300px;
+          height: 300px;
+          position: relative;
+          .operation_title {
+            position: absolute;
+            bottom: 17px;
+            font-size: 12px;
+            color: #fff;
+            width: 100%;
+            text-align: center;
+          }
+        }
+        .uploads_before {
+          img {
+            width: 56px;
+            height: 42px;
+            margin-top: 115px;
+            margin-left: 119px;
+          }
+          .uploads_astrict_title {
+            margin-top: 41px;
+            width: 100%;
+            text-align: center;
+          }
+          .uploads_but {
+            margin-top: 8px;
+            margin-left: 107px;
+
+            .el-button {
+              background: #f9f9f9;
+            }
+          }
+        }
+      }
+      .show_preview {
+        height: 300px;
+        width: 152px;
+        margin-left: 4px;
+        background: #f2f2f2;
+        .same {
+          border: 2px solid #fff;
+          background: #ddd;
+          overflow: hidden;
+          &.square {
+            width: 72px;
+            height: 76px;
+            margin-top: 24px;
+            margin-left: 39px;
+
+            div {
+              transform: scale(0.37);
+              margin-top: -53px;
+              margin-left: -56px;
+            }
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          &.roundness {
+            width: 54px;
+            height: 54px;
+            margin-top: 20px;
+            margin-left: 48px;
+            border-radius: 50%;
+            div {
+              transform: scale(0.28);
+              margin-top: -64px;
+              margin-left: -64px;
+            }
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+          &.roundness_mini {
+            width: 28px;
+            height: 28px;
+            margin-top: 20px;
+            margin-left: 61px;
+            border-radius: 50%;
+            div {
+              transform: scale(0.14);
+              margin-top: -78px;
+              margin-left: -78px;
+            }
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+        .img_preview_edit {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 36px;
+          color: #888888;
+          .uploads_but {
+            .el-button {
+              border: 0px;
+              background: #ff000000;
+            }
+          }
+        }
+      }
+    }
+    .button_content {
+      margin-top: 36px;
+      .el-button {
+        width: 100px;
+        height: 32px;
+        color: #44a9e1;
+        &.but_save {
+          margin-left: 20px;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.show_preview {
+  margin-left: 20px;
+  .el-col {
+    //     width: "74px";
+    // height: "78px";
+    // overflow: "hidden";
+    // margin: "5px";
+    // flex: 1;
+    // -webkit-flex: 1;
+    // display: flex;
+    // display: -webkit-flex;
+    // justify-content: center;
+    // -webkit-justify-content: center;
+  }
+}
+.info {
+  width: 720px;
+  margin: 0 auto;
+  .oper-dv {
+    height: 20px;
+    text-align: right;
+    margin-right: 100px;
+    a {
+      font-weight: 500;
+      &:last-child {
+        margin-left: 30px;
+      }
+    }
+  }
+  .info-item {
+    margin-top: 15px;
+    label {
+      display: inline-block;
+      width: 100px;
+      text-align: right;
+    }
+    .sel-img-dv {
+      position: relative;
+      .sel-file {
+        position: absolute;
+        width: 90px;
+        height: 30px;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+      }
+      .sel-btn {
+        position: absolute;
+        cursor: pointer;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+.cropper-content {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  .cropper {
+    width: 300px;
+    height: 300px;
+  }
+  .show-preview {
+    width: "74px";
+    height: "78px";
+    overflow: "hidden";
+    margin: "5px";
+    flex: 1;
+    -webkit-flex: 1;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    .preview {
+      overflow: hidden;
+      border-radius: 50%;
+      border: 1px solid #cccccc;
+      background: #cccccc;
+      margin-left: 40px;
+    }
+  }
+}
+.cropper-content .show-preview .preview {
+  margin-left: 0;
+}
+</style>
