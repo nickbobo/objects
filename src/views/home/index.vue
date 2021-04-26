@@ -181,11 +181,6 @@
 
       </div>
     </div>
-
-
-    
-
-
     <div class="product img_history" id="Top3Img" ref="Top3Img">
       <img src="./../../../static/bose01.jpg">
       <img src="./../../../static/bose01.jpg">
@@ -194,9 +189,6 @@
       <img src="./../../../static/bose01.jpg">
       <img src="./../../../static/bose01.jpg">
     </div>
-
-
-
     <div v-if="false">
       <div class="home_bg"></div>
       <div class="content">
