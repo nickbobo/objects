@@ -1,0 +1,944 @@
+@import "./mixin.scss";
+@import "./iconfont.scss";
+@import "./reset.scss";
+@import "./button.scss";
+@import "./transition.scss";
+@import "./element-ui.scss";
+@import "./sidebar.scss";
+@import "./modal.scss";
+
+@import "./form.scss";
+
+$infoColor: #44a8e1;
+
+body {
+  // height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+// main-container global css
+.app-container {
+  padding: 20px;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+//弹出框重构
+
+// .el-dialog__body {
+//   width: 100%;
+//   margin-left: 10%;
+// }
+.edit_mobile_dialog .el-col {
+  text-align: center;
+}
+
+button.el-button.get_code.el-button--default {
+  position: absolute;
+  margin-left: -95px;
+  margin-top: 2px;
+  font-size: 14px;
+  width: 70px;
+  color: #44a9e1;
+  padding: 0;
+  height: 36px;
+  background: #fff;
+  border: 0;
+  border-radius: 4px;
+}
+
+.affirm_edit {
+  width: 100%;
+  background: #44a8e1;
+  margin-top: 30px;
+}
+
+span.el-dialog__title {
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+}
+
+i.el-dialog__close.el-icon.el-icon-close {
+  color: #44a8e1;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.title_font_style {
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+}
+
+.title_font_mix18 {
+  font-size: 18px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+}
+
+.title_font_mix14 {
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+}
+
+.title_font_mix16 {
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 1);
+}
+
+.title_font_mix16_primary {
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+  color: #44a8e1;
+}
+
+.empty-info.el-row {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: #eeeeee;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.icon-svg-but {
+  color: #bbb;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+button.el-button.but_cancel.el-button--default.el-button--medium {
+  background: #fff;
+  border: 1px solid #44a9e1;
+  color: #44a9e1;
+}
+
+.button_content {
+  width: 100%;
+  display: -webkit-flex;
+  justify-content: center;
+
+  > div {
+    display: -webkit-flex;
+    justify-content: center;
+    width: 100%;
+
+    > button {
+      width: 100px;
+
+      // &.but_save {
+      //   color: #FFF;
+      //   background-color: #44A9E1;
+      //   border-color: #44A9E1;
+      // }
+    }
+  }
+}
+
+//编辑信息弹出框重写
+.edit_dialog {
+  .el-dialog__body {
+    padding: 10px 20px 50px 20px;
+  }
+
+  label.el-form-item__label {
+    width: 100px;
+    text-align: right;
+    margin-right: 22px;
+  }
+
+  .el-input__prefix {
+    right: 5px;
+    left: auto;
+  }
+
+  .el-date-editor.el-input.el-input--prefix.el-input--suffix.el-date-editor--date {
+    width: 240px;
+  }
+
+  .el-input {
+    width: 240px;
+  }
+
+  .input_mini {
+    width: 240px;
+
+    .el-col {
+      text-align: center;
+    }
+
+    .el-input {
+      width: 100%;
+    }
+  }
+
+  .el-dialog {
+    width: 800px;
+  }
+
+  .el-form-item {
+    margin-bottom: 14px;
+    display: -webkit-flex;
+  }
+}
+
+//表单提交单独一行显示
+.form_one_row {
+  .el-form-item__content {
+    width: 612px;
+  }
+
+  .el-input {
+    width: 612px;
+  }
+
+  input {
+    width: 612px;
+  }
+
+  label {
+    &.el-form-item__label {
+      padding-right: 11px;
+      margin-right: 7px;
+    }
+  }
+
+  .el-textarea {
+    height: 250px;
+
+    > textarea {
+      height: 250px;
+      resize: none;
+    }
+  }
+}
+
+.icon-svg-but {
+  @include icon-def-style(1);
+
+  &:hover {
+    overflow: auto !important;
+    transform: scale(1.2);
+    color: #999;
+    // font-size:20px !important;
+    // transform:scale(1.2);
+  }
+}
+
+.el-button {
+  &.search_but {
+    width: 108px;
+    background-color: #44a8e1;
+    margin-left: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    height: 44px;
+
+    &:hover {
+      background-color: #1c8dcb;
+      color: #fff;
+    }
+  }
+
+  &.primary_but {
+    width: 80px;
+    height: 30px;
+    padding: 0px;
+    color: #fff;
+    background-color: #44a9e1 !important;
+    &.grayish {
+      background-color: #a8c2d2;
+      &:hover {
+        background: #7eafce;
+      }
+    }
+    &:hover {
+      color: #ffffff;
+      background: #1c8dcb;
+    }
+    &:active {
+      color: #ffffff !important;
+      background: #1c8dcb !important;
+    }
+  }
+
+  &.plain_but {
+    width: 80px;
+    height: 30px;
+    padding: 0px;
+    background: #f9f9f9;
+    border: 1px solid rgba(221, 221, 221, 1);
+
+    &:hover {
+      color: #333333;
+      border: 1px solid rgba(221, 221, 221, 1);
+      background: #ddd;
+    }
+  }
+
+  &.but_cancel {
+    background: #fff;
+    border: 1px solid #44a9e1;
+    color: #44a9e1;
+
+    &:hover {
+      color: #1c8dcb;
+      border: 1px solid rgba(28, 141, 203, 1);
+    }
+  }
+
+  &.but_save {
+    color: #fff;
+    background-color: #44a9e1;
+    border-color: #44a9e1;
+    margin-left: 20px !important;
+
+    &:hover {
+      color: #ffffff;
+      background: #1c8dcb;
+    }
+  }
+
+  &.info_mix_but {
+    width: 100%;
+    color: #fff;
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+    padding: 0;
+    font-family: Microsoft YaHei;
+    font-weight: bold;
+
+    &.el-button--primary {
+      background-color: $infoColor;
+      border-color: $infoColor;
+    }
+
+    &:hover {
+      background-color: #1c8dcb;
+      color: #fff;
+    }
+  }
+  &.skip_but {
+    width: 72px;
+    height: 24px;
+    border: 1px solid #e9e9e9;
+    color: #aaaaaa;
+    padding: 0;
+    &:hover {
+      background-color: #f9f9f9;
+      color: #aaaa;
+    }
+  }
+  &.cancel_but {
+    border: 0px;
+    padding: 0;
+    margin-top: 30px;
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #888;
+    &:hover {
+      background: #fff;
+      color: #999;
+    }
+  }
+  &.def_simple_but {
+    border: 1px solid #dedede;
+    background: #fff;
+    color: #888888;
+    @include boxSd(0px 0px 8px 0px rgba(127, 165, 195, 0.3));
+    border-radius: 4px;
+    font-weight: bold;
+    &.active {
+      border: 1px solid #44a9e1;
+      background: #fff;
+      color: #44a9e1;
+      border-radius: 4px;
+      &:hover {
+        color: #1c8dcb;
+        border: 1px solid #1c8dcb;
+      }
+    }
+    &:hover {
+      background: #fff;
+      border: 1px solid #44a9e1;
+      color: #44a9e1;
+    }
+  }
+  &.plains_but {
+    border: 0;
+    background: #fff;
+    padding: 0;
+    &:hover {
+      border: 0;
+      background: #fff;
+      color: #44a9e1;
+    }
+  }
+}
+
+.w-title {
+  position: relative;
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+  h2 {
+    text-align: left;
+    font-size: 20px;
+    line-height: 1;
+    padding-left: 15px;
+    border-left: #66b9ff 5px solid;
+  }
+
+  // height: 32px;
+  // line-height: 32px;
+  // > span {
+  //   margin-left: 32px;
+  // }
+  // &:before {
+  //   position: absolute;
+  //   content: "";
+  //   width: 8px;
+  //   height: 32px;
+  //   background: #44a8e1;
+  // }
+}
+
+.flex {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.form_title {
+  color: $infoColor;
+  font-size: 16px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
+}
+
+.a_but {
+  width: 100%;
+  color: #888;
+  display: block;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+
+  p {
+    display: initial;
+    cursor: pointer;
+    &:hover {
+      color: #999;
+    }
+  }
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="i-"] {
+  position: relative;
+  padding-left: 26px;
+}
+[class^="i-"]:after {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  line-height: 1;
+  font-size: 20px;
+}
+
+.photo {
+  position: relative;
+  width: 85px;
+  height: 85px;
+  background-color: #fff;
+  border: 5px solid #f8f8f8;
+  border-radius: 100%;
+  margin: 10px auto;
+
+  &:after {
+    content: "\e681";
+    @include iconfont();
+    font-size: 70px;
+    line-height: 1;
+    color: #b2b2b2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+  }
+  &.i-admin:after {
+    content: "\e696";
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    border-radius: 100%;
+    position: relative;
+    z-index: 11;
+  }
+}
+.el-form-item {
+  .el-input__inner {
+    border: 1px solid #eee;
+  }
+}
+
+.el-dialog {
+  &.modal-box {
+    background-color: white;
+    padding: 25px 35px 35px;
+    margin: 0 !important;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .el-dialog__header {
+      height: 0;
+      padding: 0;
+    }
+
+    .el-dialog__body {
+      padding: 0;
+    }
+    .modal-title {
+      font-size: 16px;
+      color: #333;
+      font-weight: bold;
+      margin: 0 auto;
+      margin-bottom: 12px;
+    }
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: transparent;
+      cursor: pointer;
+      .iconfont {
+        font-size: 22px;
+        line-height: 1;
+        font-weight: bold;
+        color: #ccc;
+        &:hover {
+          color: $blue;
+        }
+      }
+    }
+  }
+}
+//Foot 体验反馈页面
+.c-bg {
+  background: #f6f6f8 url(~/static/img/page-bg.jpg) no-repeat top center;
+  padding-top: -30px;
+  margin-top: -30px;
+  width: 100%;
+}
+//16-企业招聘需求快速登记
+.reg-bg {
+  background: #f6f6f8 url(~/static/img/reg-bg.jpg) no-repeat top center;
+  margin-top: -30px;
+  padding-top: 30px;
+  width: 100%;
+}
+
+.container {
+  width: $con-w;
+  position: relative;
+  margin: 0 auto;
+  // padding: 0 10px;
+  box-sizing: border-box;
+  @include clearfix;
+}
+
+.su_but {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0;
+  button + button {
+    margin-left: 10px;
+  }
+}
+
+.text-green {
+  color: $green;
+}
+.text-red {
+  color: $red;
+}
+.text-blue {
+  color: #1ac6eb;
+}
+
+
+>>> .el-dialog {
+  margin: 0 !important;
+  width: 360px;
+  top: 45%;
+  left: 50%;
+  @include transForm(translate(-50%, -50%));
+  .el-dialog__header {
+    padding: 25px 35px 0;
+  }
+  .el-dialog__body {
+    padding: 2px 35px;
+  }
+  .el-dialog__footer {
+    padding: 0 35px 35px 35px;
+  }
+  .el-dialog__headerbtn {
+    top: 15px;
+    right: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ccc;
+    &:hover {
+      color: $blue-hover;
+    }
+  }
+}
+
+
+.btn-sm {
+  min-width: 95px;
+  height: 30px;
+  line-height: 30px;
+}
+
+
+
+.modal-footer{
+	text-align: center;
+	margin-top: 20px;
+	.w-btn{
+		& + .w-btn{
+			margin-left: 8px;
+		}
+	}
+	.w-bt-md{
+		height: 30px;
+		line-height: 30px;
+		width: 100px;
+	}
+	.w-bt-xl{
+		line-height: 42px;
+		height: 42px;
+		min-width: 150px;
+		font-size: 15px;
+	}
+	.btn-primary{
+		background-color:$bgray;
+		border-color:$bgray;
+		color: #fff;
+		&:hover{
+			background-color:$bgray-hover;
+			border-color:$bgray-hover;	
+		}
+	}
+	.btn-sm{
+		min-width:95px;
+		height: 30px;
+		line-height: 30px;
+	}
+}
+
+//是否显示下拉滚动条
+// ::-webkit-scrollbar {
+//   display: none;
+// }
+
+
+
+ul.split {
+  li + li {
+    position: relative;
+    padding-left: 15px;
+    margin-left: 15px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      height: 12px;
+      margin-top: -6px;
+      width: 1px;
+      background-color: #ccc;
+    }
+  }
+}
+
+[class^="i-"] {
+  position: relative;
+  padding-left: 26px;
+
+  &:after {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    @include iconfont();
+    transform: translateY(-50%);
+    line-height: 1;
+    font-size: 20px;
+  }
+}
+
+.i-com:after {
+  content: "\eb1a";
+  color: #428dde;
+}
+
+.i-num:after {
+  content: "\e615";
+}
+
+.i-addr:after {
+  content: "\e6f8";
+}
+
+.i-date:after {
+  content: "\e61a";
+}
+
+.i-hy:after {
+  content: "\e868";
+}
+
+.i-webs:after {
+  content: "\e629";
+}
+
+
+.r-purpose {
+  position: relative;
+  // border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 35px;
+  .purpose-list {
+    @include clearfix();
+    li {
+      width: 50%;
+      float: left;
+      @include list-line();
+    }
+  }
+  .r-fun.r-edit {
+    top: 0;
+  }
+}
+
+
+.add-line {
+  display: block;
+  background-color: #f7f7f7;
+  text-align: center;
+  color: #333;
+  height: 42px;
+  line-height: 42px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  span {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+
+    &:after {
+      content: "\e62b";
+      @include iconfont();
+      font-size: 20px;
+      line-height: 1;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -10px;
+      color: #d8d8d8;
+      transition: all 0.3s ease;
+    }
+  }
+
+  &:hover {
+    color: $blue-hover;
+    span:after {
+      color: $blue-hover;
+    }
+  }
+}
+
+
+.r-fun {
+  cursor: pointer;
+  background-color: transparent;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  .iconfont {
+    font-size: 22px;
+    color: $bgray;
+    line-height: 1;
+
+    &:hover {
+      color: $blue-hover;
+    }
+  }
+  &.r-edit {
+    top: 15px;
+  }
+  &.r-del {
+    top: 45px;
+  }
+}
+
+.r-title {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+
+
+.work-exp-list {
+  .r-item {
+    position: relative;
+    padding: 15px 0;
+    & + .r-item {
+      border-top: 1px dashed #d7d7d7;
+    }
+    .r-edit {
+      top: 15px;
+    }
+    .r-del {
+      top: 45px;
+    }
+    .r-item-info {
+      dt {
+        font-size: 16px;
+        margin-bottom: 15px;
+        .split {
+          margin: 0 10px;
+          font-weight: bold;
+        }
+      }
+      dd {
+        @include list-line();
+        margin: 10px 0;
+      }
+      .list-block {
+        @include clearfix();
+        li {
+          float: left;
+        }
+      }
+    }
+  }
+
+  .work-exp-item {
+    margin-top: 10px;
+    position: relative;
+    .el-row {
+      margin-top: 18px;
+      word-wrap: break-word;
+      &.job_duties {
+        margin-top: 0px;
+      }
+      &.company_profile {
+        color: #888888;
+      }
+      .icon-edit {
+        margin-left: -10px;
+      }
+    }
+  }
+}
+
+
+[class^="col"] {
+  position: relative;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
